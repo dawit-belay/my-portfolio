@@ -14,7 +14,7 @@ const Contact = () => {
   });
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
+    const { name, value } = e.target;  
     setForm({ ...form, [name]: value });
   };
 
@@ -22,18 +22,37 @@ const Contact = () => {
     e.preventDefault();
     setLoading(true); // Show loading state
 
+    // Debug: Check if env variables are loaded
+    const serviceId = import.meta.env.VITE_APP_EMAILJS_SERVICE_ID;
+    const templateId = import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID;
+    const publicKey = import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY;
+
+    console.log("EmailJS Config:", {
+      serviceId: serviceId ? "✅ Loaded" : "❌ Missing",
+      templateId: templateId ? `✅ Loaded: ${templateId}` : "❌ Missing",
+      publicKey: publicKey ? "✅ Loaded" : "❌ Missing"
+    });
+
     try {
       await emailjs.sendForm(
-        import.meta.env.VITE_APP_EMAILJS_SERVICE_ID,
-        import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID,
+        serviceId,
+        templateId,
         formRef.current,
-        import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY
+        publicKey
       );
 
       // Reset form and stop loading
       setForm({ name: "", email: "", message: "" });
+      alert("✅ Message sent successfully!");
     } catch (error) {
-      console.error("EmailJS Error:", error); // Optional: show toast
+      console.error("EmailJS Error Details:", {
+        status: error.status,
+        text: error.text,
+        serviceId,
+        templateId,
+        publicKey: publicKey ? `${publicKey.substring(0, 10)}...` : "missing"
+      });
+      alert(`❌ Error sending message: ${error.text || error.message}\n\nCheck console for details.`);
     } finally {
       setLoading(false); // Always stop loading, even on error
     }
