@@ -48,7 +48,7 @@ const AppShowcase = () => {
   return (
     <div id="work" ref={sectionRef} className="app-showcase">
       <div className="w-full">
-        <div className="flex-center section-padding">
+        <div className="flex-center px-5 md:px-10 pt-2 md:pt-4 pb-10 md:py-20">
           <div className="w-full h-full md:px-10 px-5">
             <TitleHeader
               title="Projects I Build So Far"

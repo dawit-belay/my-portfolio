@@ -36,7 +36,7 @@ const TechStack = () => {
   });
 
   return (
-    <div id="skills" className="flex-center section-padding">
+    <div id="skills" className="flex-center section-padding scroll-mt-24 md:scroll-mt-32">
       <div className="w-full h-full md:px-10 px-5">
         <TitleHeader
           title="How I Can Contribute & My Key Skills"

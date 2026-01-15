@@ -85,13 +85,7 @@ section {
   }
 
   .hero-text {
-    @apply flex flex-col justify-center items-center md:text-[60px] text-[30px] font-semibold relative z-10 pointer-events-none;
-    img {
-      @apply size-8 md:size-10 object-contain;
-    }
-    .slide {
-      @apply absolute pt-0 px-2 md:px-5 py-[30px] h-[48px] md:h-[78px] md:translate-y-1 translate-y-0 overflow-hidden;
-    }
+    @apply flex flex-col justify-center items-center relative z-10;
   }
 
   .hero-badge {
@@ -114,7 +108,7 @@ section {
     }
 
     .inner {
-      @apply mx-auto flex items-center justify-between;
+      @apply mx-auto flex items-center justify-between gap-2 sm:gap-4 md:gap-6;
     }
 
     .logo {
@@ -122,16 +116,16 @@ section {
     }
 
     nav.desktop {
-      @apply hidden lg:flex items-center;
+      @apply flex items-center;
 
       ul {
-        @apply flex space-x-8;
+        @apply flex flex-wrap gap-3 sm:gap-4 md:gap-6 lg:space-x-8;
 
         li {
           @apply text-white-50 relative;
 
           span {
-            @apply transition-colors duration-300 hover:text-white;
+            @apply transition-colors duration-300 hover:text-white text-sm sm:text-base;
           }
 
           .underline {

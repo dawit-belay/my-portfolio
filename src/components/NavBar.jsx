@@ -44,7 +44,7 @@ const NavBar = () => {
 
         <a href="#contact" className="contact-btn group">
           <div className="inner">
-            <span>Contact me</span>
+            <span className="text-xs sm:text-sm md:text-base">Contact me</span>
           </div>
         </a>
       </div>
